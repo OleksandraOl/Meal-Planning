@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ingredients available</title>
+</head>
+<body>
+    <h1>Ingredient list</h1>
+    <a href="{% url 'add-ingredient'%}">Add ingredient</a>
+    <ul>
+        {% for ingredient in ingredients %}
+            <li>
+                {{ingredient.name}}
+            </li>
+        {% empty %}
+            <li>No ingredients yet</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
