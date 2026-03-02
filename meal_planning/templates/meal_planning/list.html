@@ -16,5 +16,12 @@
             <li>No ingredients yet</li>
         {% endfor %}
     </ul>
+
+    <form action="{% url 'generate-recipe' %}" method="post">
+        {% csrf_token %}
+        <button type="submit" class="generate-btn">
+            Generate recipe with available ingredients
+        </button>
+    </form>
 </body>
 </html>
