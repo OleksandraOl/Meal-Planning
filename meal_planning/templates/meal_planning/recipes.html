@@ -1,0 +1,54 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Some ideas</title>
+</head>
+<body>
+     <a href="{% url 'ingredient-list' %}">Back to the ingredient list</a>
+     {% if messages %}
+        <div class="messages-container">
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        </div>
+     {% endif %}
+     {% if recipes %}
+        {% for recipe in recipes %}
+            <div class="recipe_card">
+                <h2>{{ recipe.recipe_name }}</h2>
+                <p><strong>Time:</strong>{{ recipe.prep_time_min }}</p>
+
+                <h3>What you'll need:</h3>
+                <ul>
+                    {% for item in recipe.list_of_ingredients %}
+                        <li>{{ item }}</li>
+                    {% endfor %}
+                </ul>
+
+                <details>
+                    <summary style="cursor: pointer; color: blue; text-decoration: underline;">
+                        Show cooking instructions
+                    </summary>
+                    <div class="instructions-content">
+                    <ol>
+                        {% for step in recipe.instructions %}
+                            <li>{{ step }}</li>
+                        {% endfor %}
+                     </ol>
+                </div>
+                </details>
+            </div>
+        {% endfor %}
+     {% else %}
+        <p> Sorry, the chef is tired today. Please try again. </p>
+     {% endif %}
+
+    <form method="POST">
+        {% csrf_token %}
+        <button type="submit">More ideas</button>
+    </form>
+</body>
+</html>
