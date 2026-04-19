@@ -122,5 +122,3 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
-# gemini ai
-api_key = os.getenv("GEMINI_API_KEY")

@@ -7,7 +7,8 @@ def get_system_instructions():
 
 def build_recipe_prompt(ingredients):
     return f"""
-        Based on these ingredients: {ingredients}, provide a recipe suggestions. 
+        Based on these ingredients: {ingredients}, provide a recipe suggestions.
+        Do not include ingredients that do not exist. 
         Return a list of objects where each object has keys:
             "recipe_name" (a string of 50 characters or less),
             "prep_time_min" (integer in minutes),
